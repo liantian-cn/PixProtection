@@ -135,8 +135,13 @@ class Context:
         return self.readPercentCell(26)
 
     @property
+    def target_cast_interruptible_raw(self) -> bool:
+        """Current interruptible cast/channel, without blacklist filtering."""
+        return self.readBooleanCell(27)
+
+    @property
     def target_cast_interruptible(self) -> bool:
-        if not self.readBooleanCell(27):
+        if not self.target_cast_interruptible_raw:
             return False
         icon = self.target_cast_icon
         return icon is not None and icon not in self.interrupt_blacklist
@@ -178,8 +183,13 @@ class Context:
         return self.readPercentCell(36)
 
     @property
+    def focus_cast_interruptible_raw(self) -> bool:
+        """Current interruptible cast/channel, without blacklist filtering."""
+        return self.readBooleanCell(37)
+
+    @property
     def focus_cast_interruptible(self) -> bool:
-        if not self.readBooleanCell(37):
+        if not self.focus_cast_interruptible_raw:
             return False
         icon = self.focus_cast_icon
         return icon is not None and icon not in self.interrupt_blacklist
@@ -209,72 +219,79 @@ class Context:
         return self.readSpellCDCell(43)
 
     @property
-    def spell_cd_avenging_wrath(self) -> float:
+    def spell_cd_sentinel(self) -> float:
         return self.readSpellCDCell(44)
 
     @property
-    def spell_cd_execution_sentence(self) -> float:
+    def spell_cd_avengers_shield(self) -> float:
         return self.readSpellCDCell(45)
 
     @property
-    def spell_cd_wake_of_ashes(self) -> float:
+    def spell_cd_consecration(self) -> float:
         return self.readSpellCDCell(46)
 
     @property
-    def spell_cd_blade_of_justice(self) -> float:
-        return self.readSpellCDCell(47)
+    def spell_charges_blessed_hammer(self) -> int:
+        return int(self.readNumberCell(47) + 0.5)
+
+    @property
+    def spell_charges_judgment(self) -> int:
+        return int(self.readNumberCell(48) + 0.5)
+
+    @property
+    def power_mana_pct(self) -> float:
+        return self.readPercentCell(49)
+
+    @property
+    def player_has_buff_sacred_weapon(self) -> bool:
+        return self.readBooleanCell(50)
 
     @property
     def spell_cd_divine_toll(self) -> float:
         return self.readSpellCDCell(51)
 
     @property
-    def spell_cd_lay_on_hands(self) -> float:
-        return self.readSpellCDCell(52)
+    def player_buff_duration_shield_of_the_righteous(self) -> float:
+        return self.readAuraDurationCell(52)
 
     @property
-    def spell_cd_divine_shield(self) -> float:
-        return self.readSpellCDCell(53)
+    def player_buff_duration_consecration(self) -> float:
+        return self.readAuraDurationCell(53)
 
     @property
-    def spell_charges_judgment(self) -> int:
-        """Grayscale charge count (0–2); 0 also includes missing data."""
-        return int(self.readNumberCell(48) + 0.5)
+    def player_buff_stacks_shining_light(self) -> int:
+        return int(self.readNumberCell(54) + 0.5)
 
     @property
-    def item_cd_lights_potential(self) -> bool:
-        return self.readBooleanCell(54)
+    def player_buff_stacks_shining_light_progress(self) -> int:
+        return int(self.readNumberCell(55) + 0.5)
 
     @property
-    def player_has_buff_avenging_wrath(self) -> bool:
-        return self.readBooleanCell(55)
+    def spell_charges_holy_bulwark(self) -> int:
+        return int(self.readNumberCell(56) + 0.5)
 
     @property
-    def player_has_buff_divine_purpose(self) -> bool:
-        return self.readBooleanCell(56)
+    def spell_charges_sacred_weapon(self) -> int:
+        return int(self.readNumberCell(57) + 0.5)
 
     @property
-    def player_has_buff_dawnlight(self) -> bool:
-        return self.readBooleanCell(57)
+    def spec_protection_holy_armaments(self) -> int:
+        return int(self.readNumberCell(58) + 0.5)
 
     @property
-    def player_has_buff_art_of_war(self) -> bool:
-        return self.readBooleanCell(58)
+    def word_of_glory_two_stacks_health_pct(self) -> int:
+        return int(self.readNumberCell(59) + 0.5)
 
     @property
-    def player_has_buff_divine_arbiter_storm(self) -> bool:
-        return self.readBooleanCell(59)
+    def word_of_glory_one_stack_health_pct(self) -> int:
+        return int(self.readNumberCell(60) + 0.5)
 
     @property
-    def four_piece_enabled(self) -> bool:
-        return self.readBooleanCell(60)
+    def word_of_glory_progress_health_pct(self) -> int:
+        return int(self.readNumberCell(61) + 0.5)
 
     @property
-    def target_in_blade_of_justice_range(self) -> bool:
-        return self.readBooleanCell(61)
-
-    @property
-    def target_in_judgment_range(self) -> bool:
+    def focus_in_hammer_of_justice_range(self) -> bool:
         return self.readBooleanCell(62)
 
     @property
@@ -298,16 +315,7 @@ class Context:
         return self.readBooleanCell(67)
 
     @property
-    def mouseover_in_melee_range(self) -> bool:
-        return self.readBooleanCell(49)
-
-    @property
-    def burst_potion_enabled(self) -> bool:
-        return self.readBooleanCell(50)
-
-    @property
     def player_melee_enemies_count(self) -> int:
-        """Observable living enemies within Hammer of Justice range (0–40)."""
         return int(self.matrix.getCell(68).ratio * 40 + 0.5)
 
     @property

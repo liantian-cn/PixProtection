@@ -16,7 +16,7 @@ config:set_default(true)
 insert(ConfigRows, {
     type = "combo",
     name = "自动清毒",
-    tooltip = "战斗中有可攻击目标时，自动清除自身可驱散的中毒和疾病，优先级低于治疗石和治疗药水。",
+    tooltip = "战斗中自动清除自身可驱散的中毒和疾病，优先级仅在祝福之锤之前；无敌对目标时仍可清毒。",
     bind_config = config,
     default_value = true,
     options = {

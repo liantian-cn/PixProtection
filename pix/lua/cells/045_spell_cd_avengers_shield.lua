@@ -19,8 +19,8 @@ local Cell                     = addonTable.Cell
 local remainingCurve           = addonTable.CURVE.SpellColddownRemaining
 
 -- 本地配置
-local X = 44
-local SPELL_IDS = { 31884 }
+local X = 45
+local SPELL_IDS = { 31935 }
 local eventFrame               = CreateFrame("Frame")
 local cell
 

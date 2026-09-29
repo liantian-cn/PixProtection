@@ -21,8 +21,8 @@ local CellBackplate = addonTable.CellBackplate
 local SIZE = addonTable.SIZE
 
 -- 本地配置
-local X = 48
-local SPELL_IDS = { 275779, 20271 }
+local X = 57
+local SPELL_IDS = { 432472 }
 local eventFrame = CreateFrame("Frame")
 local text
 
@@ -30,7 +30,9 @@ local selectedSpellID
 local function SelectSpell()
     selectedSpellID = nil
     for _, spellID in ipairs(SPELL_IDS) do
-        if IsSpellInSpellBook(spellID) then
+        -- 军备天赋只代理已知性；充能始终读取当前候选技能本身。
+        if IsSpellInSpellBook(spellID) or C_SpellBook.IsSpellKnown(spellID)
+                or IsSpellInSpellBook(1289728) or C_SpellBook.IsSpellKnown(1289728) then
             selectedSpellID = spellID
             return
         end

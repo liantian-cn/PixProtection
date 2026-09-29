@@ -21,18 +21,18 @@ local UIInitFuncs = addonTable.UIInitFuncs
 
 -- 本地配置
 local X = 62
-local SPELL_ID = 20271
+local SPELL_ID = 853
 local cell
 local eventFrame = CreateFrame("Frame")
 
 local function Update()
     if not cell then return end
-    local inRange = IsSpellInRange(SPELL_ID, "target")
+    local inRange = IsSpellInRange(SPELL_ID, "focus")
     if not issecretvalue(inRange) and inRange == nil then
         inRange = false
     end
     local rangeColor = EvaluateColorFromBoolean(inRange, COLOR.WHITE, COLOR.BLACK)
-    local color = EvaluateColorFromBoolean(UnitExists("target"), rangeColor, COLOR.BLACK)
+    local color = EvaluateColorFromBoolean(UnitExists("focus"), rangeColor, COLOR.BLACK)
     cell:setCell(color)
 end
 
@@ -42,7 +42,7 @@ local function Initialize()
 end
 
 eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-eventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
+eventFrame:RegisterEvent("PLAYER_FOCUS_CHANGED")
 eventFrame:RegisterEvent("SPELLS_CHANGED")
 
 eventFrame:SetScript("OnEvent", function()

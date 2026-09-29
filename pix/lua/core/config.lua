@@ -16,9 +16,9 @@ local addonName, addonTable = ...
 local insert = table.insert
 local setmetatable = setmetatable
 
-PixRetributionDB = PixRetributionDB or {}
+PixProtectionDB = PixProtectionDB or {}
 
-local addonSettings = PixRetributionDB
+local addonSettings = PixProtectionDB
 
 addonSettings.profiles = addonSettings.profiles or {}
 addonSettings.profiles["default"] = addonSettings.profiles["default"] or {}

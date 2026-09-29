@@ -1,4 +1,4 @@
--- 第 57 格显示玩家的晨光增益：存在为白色，否则为黑色。
+-- 玩家小闪耀之光增益的层数，灰度字节直接表示计数。
 -- 原生光环容器负责匹配与显隐，不读取秘密光环数据。
 local addonName, addonTable    = ...
 
@@ -18,8 +18,8 @@ local FrameLevel              = addonTable.FrameLevel
 local UIInitFuncs             = addonTable.UIInitFuncs
 
 -- 本地配置与状态
-local X = 57
-local AURA_IDS = { 431522 }
+local X = 55
+local AURA_IDS = { 182104 }
 local eventFrame              = CreateFrame("Frame")
 local container
 
@@ -31,6 +31,12 @@ local function Refresh()
 end
 
 local function Initialize()
+    if not C_AddOns.IsAddOnLoaded("Blizzard_AuraContainer") then
+        C_AddOns.LoadAddOn("Blizzard_AuraContainer")
+    end
+    if not C_AddOns.IsAddOnLoaded("Blizzard_AuraContainer") then
+        error("未能加载 Blizzard_AuraContainer，无法绑定光环")
+    end
     local cell = Cell:New({ x = X })
     container = CreateFrame("AuraContainer", nil, cell.Frame, "CustomAuraContainerTemplate")
     container:SetAllPoints(cell.Frame)
@@ -47,11 +53,18 @@ local function Initialize()
             frame:SetSize(SIZE.CELL, SIZE.CELL)
             frame:SetPoint("TOPLEFT", container, "TOPLEFT")
             frame:SetFrameLevel(FrameLevel.AuraButton)
-            local color = COLOR.WHITE
-            local overlay = frame:CreateTexture(nil, "OVERLAY")
-            overlay:SetAllPoints(frame)
-            overlay:SetTexture("Interface\\Buttons\\WHITE8X8")
-            overlay:SetVertexColor(color:GetRGBA())
+            frame:SetClipsChildren(true)
+            local fontPath = GameFontNormal:GetFont()
+            local text = frame:CreateFontString(nil, "ARTWORK")
+            text:SetFont(fontPath, SIZE.CELL_FONT_SIZE, "")
+            text:SetPoint("CENTER", frame, "CENTER")
+            text:SetJustifyH("CENTER")
+            text:SetJustifyV("MIDDLE")
+            text:SetShadowOffset(0, 0)
+            text:SetShadowColor(0, 0, 0, 0)
+            text:SetTextColor(1, 1, 1, 1)
+            text:SetFixedColor(false)
+            frame:SetApplicationCount(text, { formatter = addonTable.CountFormatter })
         end,
     })
     Refresh()

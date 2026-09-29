@@ -40,11 +40,11 @@ addonTable.CommandHandler = {}
 local CommandHandler = addonTable.CommandHandler
 
 function addonTable.PrintCommandHelp()
-    print("PixRetribution 命令:")
-    print("/retribtion toggle — 切换启停")
-    print("/retribtion disable — 关闭插件")
-    print("/retribtion burst [秒数] — 爆发窗口，默认 15 秒，0 结束")
-    print("/retribtion delay [秒数] — 暂停所有自动动作，默认 0.4 秒")
+    print("PixProtection 命令:")
+    print("/protection toggle — 切换启停")
+    print("/protection disable — 关闭插件")
+    print("/protection burst [秒数] — 爆发窗口，默认 15 秒，0 结束")
+    print("/protection delay [秒数] — 暂停所有自动动作，默认 0.4 秒")
 end
 
 function CommandHandler:Dispatch(command)
@@ -65,9 +65,9 @@ function CommandHandler:Dispatch(command)
     handler(self, msg)
 end
 
-SLASH_PixRetribution1 = "/retribtion"
+SLASH_PixProtection1 = "/protection"
 
-SlashCmdList.PixRetribution = function(command)
+SlashCmdList.PixProtection = function(command)
     CommandHandler:Dispatch(command)
 end
 

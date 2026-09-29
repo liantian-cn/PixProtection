@@ -1,4 +1,4 @@
-"""PixRetribution desktop application entry point."""
+"""PixProtection desktop application entry point."""
 
 import sys
 

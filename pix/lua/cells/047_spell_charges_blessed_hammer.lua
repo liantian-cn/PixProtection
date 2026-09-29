@@ -1,4 +1,4 @@
--- 单格灰度字节直接表示充能数；本技能为 0–2 次，缺失或零充能为黑色。
+-- 单格灰度字节直接表示充能数；本技能为 0–3 次，缺失或零充能为黑色。
 -- 秘密充能仅交给 string.format 和 SetText，不调用受执行环境限制的 FormatNumber。
 local addonName, addonTable    = ...
 
@@ -21,8 +21,8 @@ local CellBackplate = addonTable.CellBackplate
 local SIZE = addonTable.SIZE
 
 -- 本地配置
-local X = 48
-local SPELL_IDS = { 275779, 20271 }
+local X = 47
+local SPELL_IDS = { 204019 }
 local eventFrame = CreateFrame("Frame")
 local text
 

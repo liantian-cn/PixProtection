@@ -1,4 +1,4 @@
--- 第 59 格显示玩家的神圣仲裁风暴增益：存在为白色，否则为黑色。
+-- 第 50 格显示玩家的圣言祭礼增益：存在为白色，否则为黑色。
 -- 原生光环容器负责匹配与显隐，不读取秘密光环数据。
 local addonName, addonTable    = ...
 
@@ -18,8 +18,8 @@ local FrameLevel              = addonTable.FrameLevel
 local UIInitFuncs             = addonTable.UIInitFuncs
 
 -- 本地配置与状态
-local X = 59
-local AURA_IDS = { 1306162 }
+local X = 50
+local AURA_IDS = { 433550 }
 local eventFrame              = CreateFrame("Frame")
 local container
 
@@ -31,6 +31,12 @@ local function Refresh()
 end
 
 local function Initialize()
+    if not C_AddOns.IsAddOnLoaded("Blizzard_AuraContainer") then
+        C_AddOns.LoadAddOn("Blizzard_AuraContainer")
+    end
+    if not C_AddOns.IsAddOnLoaded("Blizzard_AuraContainer") then
+        error("未能加载 Blizzard_AuraContainer，无法绑定光环")
+    end
     local cell = Cell:New({ x = X })
     container = CreateFrame("AuraContainer", nil, cell.Frame, "CustomAuraContainerTemplate")
     container:SetAllPoints(cell.Frame)

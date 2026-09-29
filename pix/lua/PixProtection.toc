@@ -1,8 +1,8 @@
 ## Interface: 120100
-## Title: 圣骑士-惩戒
+## Title: 圣骑士-防御
 ## Version: 12.1.0.68209
 ## Category: Tools
-## SavedVariables: PixRetributionDB
+## SavedVariables: PixProtectionDB
 ## LoadSavedVariablesFirst: 1
 ## IconTexture: Interface\Icons\Spell_Holy_AuraOfLight
 
@@ -59,25 +59,25 @@ cells\040_focus_in_ranged_range.lua
 cells\041_focus_in_interrupt_range.lua
 cells\042_spell_cd_global_cooldown.lua
 cells\043_spell_cd_rebuke.lua
-cells\044_spell_cd_avenging_wrath.lua
-cells\045_spell_cd_execution_sentence.lua
-cells\046_spell_cd_wake_of_ashes.lua
-cells\047_spell_cd_blade_of_justice.lua
+cells\044_spell_cd_sentinel.lua
+cells\045_spell_cd_avengers_shield.lua
+cells\046_spell_cd_consecration.lua
+cells\047_spell_charges_blessed_hammer.lua
 cells\048_spell_charges_judgment.lua
-cells\049_mouseover_in_melee_range.lua
-cells\050_burst_potion_enabled.lua
+cells\049_power_mana_pct.lua
+cells\050_player_has_buff_sacred_weapon.lua
 cells\051_spell_cd_divine_toll.lua
-cells\052_spell_cd_lay_on_hands.lua
-cells\053_spell_cd_divine_shield.lua
-cells\054_item_cd_lights_potential.lua
-cells\055_player_has_buff_avenging_wrath.lua
-cells\056_player_has_buff_divine_purpose.lua
-cells\057_player_has_buff_dawnlight.lua
-cells\058_player_has_buff_art_of_war.lua
-cells\059_player_has_buff_divine_arbiter_storm.lua
-cells\060_four_piece_enabled.lua
-cells\061_target_in_blade_of_justice_range.lua
-cells\062_target_in_judgment_range.lua
+cells\052_player_buff_duration_shield_of_the_righteous.lua
+cells\053_player_buff_duration_consecration.lua
+cells\054_player_buff_stacks_shining_light.lua
+cells\055_player_buff_stacks_shining_light_progress.lua
+cells\056_spell_charges_holy_bulwark.lua
+cells\057_spell_charges_sacred_weapon.lua
+cells\058_spec_protection_holy_armaments.lua
+cells\059_word_of_glory_two_stacks_health_pct.lua
+cells\060_word_of_glory_one_stack_health_pct.lua
+cells\061_word_of_glory_progress_health_pct.lua
+cells\062_focus_in_hammer_of_justice_range.lua
 cells\063_target_in_hammer_of_justice_range.lua
 cells\064_player_has_dispellable_poison_or_disease.lua
 cells\065_spell_cd_cleanse_toxins.lua

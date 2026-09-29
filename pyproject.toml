@@ -1,7 +1,7 @@
 [project]
-name = "pixretribution"
+name = "pixprotection"
 version = "0.1.0"
-description = "Herald of the Sun Retribution Paladin pixel rotation"
+description = "Lightsmith Protection Paladin pixel rotation"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

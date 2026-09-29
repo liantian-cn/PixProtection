@@ -6,33 +6,33 @@ local UnitClass = UnitClass
 local GetSpecialization = GetSpecialization
 local logging = addonTable.logging
 
--- 只为圣骑士惩戒专精绑定这套循环；切换专精后重新加载插件。
+-- 只为圣骑士防御专精绑定这套循环；切换专精后重新加载插件。
 local _, classFilename = UnitClass("player")
 if classFilename ~= "PALADIN" then
     C_AddOns.DisableAddOn(addonName)
     return
 end
-if GetSpecialization() ~= 3 then return end
+if GetSpecialization() ~= 2 then return end
 
 local macroList = {}
 insert(macroList, { title = "reloadUI", key = "CTRL-F12", text = "/reload" })
-insert(macroList, { title = "最终审判", key = "RCTRL-NUMPAD1", text = "/cast [@target,harm,nodead] 最终审判" })
+insert(macroList, { title = "目标正义盾击", key = "RCTRL-NUMPAD1", text = "/cast [@target,harm,nodead] 正义盾击" })
 insert(macroList, { title = "焦点责难", key = "RCTRL-NUMPAD2", text = "/cast [@focus,harm,nodead] 责难" })
 insert(macroList, { title = "目标责难", key = "RCTRL-NUMPAD3", text = "/cast [@target,harm,nodead] 责难" })
-insert(macroList, { title = "复仇之怒", key = "RCTRL-NUMPAD4", text = "/cast 复仇之怒" })
-insert(macroList, { title = "处决宣判", key = "RCTRL-NUMPAD5", text = "/cast [@target,harm,nodead] 处决宣判" })
-insert(macroList, { title = "灰烬觉醒", key = "RCTRL-NUMPAD6", text = "/cast 灰烬觉醒" })
-insert(macroList, { title = "公正之剑", key = "RCTRL-NUMPAD7", text = "/cast [@target,harm,nodead] 公正之剑" })
-insert(macroList, { title = "圣光潜力", key = "RCTRL-NUMPAD8", text = "/use item:241308\n/use item:241309" })
-insert(macroList, { title = "审判", key = "RCTRL-NUMPAD9", text = "/cast [@target,harm,nodead] 审判" })
-insert(macroList, { title = "神圣风暴", key = "RCTRL-NUMPAD0", text = "/cast 神圣风暴" })
+insert(macroList, { title = "戒卫", key = "RCTRL-NUMPAD4", text = "/cast 戒卫" })
+insert(macroList, { title = "目标复仇者之盾", key = "RCTRL-NUMPAD5", text = "/cast [@target,harm,nodead] 复仇者之盾" })
+insert(macroList, { title = "焦点复仇者之盾", key = "RCTRL-NUMPAD6", text = "/cast [@focus,harm,nodead] 复仇者之盾" })
+insert(macroList, { title = "奉献", key = "RCTRL-NUMPAD7", text = "/cast 奉献" })
+insert(macroList, { title = "祝福之锤", key = "RCTRL-NUMPAD8", text = "/cast 祝福之锤" })
+insert(macroList, { title = "目标审判", key = "RCTRL-NUMPAD9", text = "/cast [@target,harm,nodead] 审判" })
+insert(macroList, { title = "焦点审判", key = "RCTRL-NUMPAD0", text = "/cast [@focus,harm,nodead] 审判" })
 insert(macroList, { title = "圣洁鸣钟", key = "RSHIFT-NUMPAD1", text = "/cast [@target,harm,nodead] 圣洁鸣钟" })
-insert(macroList, { title = "圣疗术", key = "RSHIFT-NUMPAD2", text = "/cast [@player] 圣疗术" })
-insert(macroList, { title = "圣盾术", key = "RSHIFT-NUMPAD3", text = "/cast 圣盾术" })
+insert(macroList, { title = "神圣壁垒", key = "RSHIFT-NUMPAD2", text = "/cast [@player] 神圣壁垒" })
+insert(macroList, { title = "圣洁武器", key = "RSHIFT-NUMPAD3", text = "/cast [@player] 圣洁武器" })
 insert(macroList, { title = "荣耀圣令", key = "RSHIFT-NUMPAD4", text = "/cast [@player] 荣耀圣令" })
-insert(macroList, { title = "治疗石", key = "RSHIFT-NUMPAD5", text = "/use item:5512" })
-insert(macroList, { title = "银月城生命药水", key = "RSHIFT-NUMPAD6", text = "/use item:241304" })
-insert(macroList, { title = "清毒术", key = "RSHIFT-NUMPAD7", text = "/cast [@player]清毒术" })
+insert(macroList, { title = "焦点正义盾击", key = "RSHIFT-NUMPAD5", text = "/cast [@focus,harm,nodead] 正义盾击" })
+insert(macroList, { title = "圣言祭礼", key = "RSHIFT-NUMPAD6", text = "/cast 圣言祭礼\n/use 16" })
+insert(macroList, { title = "清毒术", key = "RSHIFT-NUMPAD7", text = "/cast [@player] 清毒术" })
 insert(macroList, { title = "上饰品", key = "RSHIFT-NUMPAD8", text = "/use 13" })
 insert(macroList, { title = "下饰品", key = "RSHIFT-NUMPAD9", text = "/use 14" })
 

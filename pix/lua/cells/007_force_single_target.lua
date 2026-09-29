@@ -16,7 +16,7 @@ config:set_default(false)
 insert(ConfigRows, {
     type = "combo",
     name = "输出模式",
-    tooltip = "自动按责难范围内的敌人数分支；单体模式仍保留四件套特殊规则。",
+    tooltip = "自动按制裁之锤范围内的可观察敌人数判断多目标；强制单体时不自动使用圣洁鸣钟。",
     bind_config = config,
     default_value = false,
     options = {
