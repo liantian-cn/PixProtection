@@ -2,17 +2,10 @@ local addonName, addonTable = ...
 local insert = table.insert
 local CreateFrame = CreateFrame
 local SetOverrideBindingClick = SetOverrideBindingClick
-local UnitClass = UnitClass
-local GetSpecialization = GetSpecialization
 local logging = addonTable.logging
 
--- 只为圣骑士防御专精绑定这套循环；切换专精后重新加载插件。
-local _, classFilename = UnitClass("player")
-if classFilename ~= "PALADIN" then
-    C_AddOns.DisableAddOn(addonName)
-    return
-end
-if GetSpecialization() ~= 2 then return end
+-- 复用 base.lua 的检查结果，不为待重载插件绑定技能宏。
+if addonTable.RELOAD_REQUIRED then return end
 
 local macroList = {}
 insert(macroList, { title = "reloadUI", key = "CTRL-F12", text = "/reload" })
